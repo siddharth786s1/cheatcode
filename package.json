@@ -4,20 +4,20 @@
   "description": "AI-powered real-time conversational guidance with stealth mode",
   "main": "main.js",
   "scripts": {
-    "start": "webpack && (command -v xvfb-run >/dev/null 2>&1 && xvfb-run -a electron . || electron .)",
+    "start": "webpack && electron .",
     "build": "webpack",
-    "package": "electron-builder"
+    "package": "electron-builder --win --x64"
   },
   "keywords": [],
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "electron": "^25.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "openai": "^4.0.0",
     "axios": "^1.4.0",
-    "dotenv": "^16.3.1"
+    "dotenv": "^16.3.1",
+    "tesseract.js": "^5.0.4"
   },
   "devDependencies": {
     "webpack": "^5.88.2",
@@ -28,7 +28,8 @@
     "@babel/preset-react": "^7.22.5",
     "css-loader": "^6.8.1",
     "style-loader": "^3.3.4",
-    "electron-builder": "^24.6.0"
+    "electron-builder": "^24.6.0",
+    "electron": "^25.0.0"
   },
   "build": {
     "appId": "com.example.cluelystealth",
@@ -43,14 +44,9 @@
     "directories": {
       "buildResources": "assets"
     },
-    "mac": {
-      "target": "dmg"
-    },
     "win": {
-      "target": "nsis"
-    },
-    "linux": {
-      "target": "AppImage"
+      "icon": "icon.ico",
+      "target": ["nsis", "portable"]
     }
   }
 }
