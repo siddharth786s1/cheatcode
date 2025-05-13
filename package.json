@@ -1,0 +1,56 @@
+{
+  "name": "cluely-stealth-assistant",
+  "version": "1.0.0",
+  "description": "AI-powered real-time conversational guidance with stealth mode",
+  "main": "main.js",
+  "scripts": {
+    "start": "webpack && (command -v xvfb-run >/dev/null 2>&1 && xvfb-run -a electron . || electron .)",
+    "build": "webpack",
+    "package": "electron-builder"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "electron": "^25.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "openai": "^4.0.0",
+    "axios": "^1.4.0",
+    "dotenv": "^16.3.1"
+  },
+  "devDependencies": {
+    "webpack": "^5.88.2",
+    "webpack-cli": "^5.1.4",
+    "babel-loader": "^9.1.3",
+    "@babel/core": "^7.22.5",
+    "@babel/preset-env": "^7.22.5",
+    "@babel/preset-react": "^7.22.5",
+    "css-loader": "^6.8.1",
+    "style-loader": "^3.3.4",
+    "electron-builder": "^24.6.0"
+  },
+  "build": {
+    "appId": "com.example.cluelystealth",
+    "productName": "Cluely Stealth Assistant",
+    "files": [
+      "main.js",
+      "preload.js",
+      "dist/**/*",
+      "node_modules/**/*",
+      ".env"
+    ],
+    "directories": {
+      "buildResources": "assets"
+    },
+    "mac": {
+      "target": "dmg"
+    },
+    "win": {
+      "target": "nsis"
+    },
+    "linux": {
+      "target": "AppImage"
+    }
+  }
+}
